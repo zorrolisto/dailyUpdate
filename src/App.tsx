@@ -63,7 +63,9 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>{showResult ? "Result copied to clipboard!!" : currentStep.question}</h1>
+      <h1>
+        {showResult ? "Result copied to clipboard!!" : currentStep.question}
+      </h1>
       <div className="">
         {showResult ? (
           <textarea
@@ -74,6 +76,7 @@ function App() {
           />
         ) : (
           <input
+            autoFocus
             placeholder="Insert your answer here..."
             onKeyDown={goToNextStepByEnter}
             value={currentAnswer}
