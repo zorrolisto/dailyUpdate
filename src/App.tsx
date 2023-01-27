@@ -26,7 +26,7 @@ function App() {
 
   const setResultByAnswers = (answers: string[]) => {
     setShowResult(true);
-    const message = `1. ${answers[0]}\n2. ${answers[1]}\n3. ${answers[2]}\n4. ${answers[3]}\n`;
+    const message = `Good Morning Team!\n1. ${answers[0]}\n2. ${answers[1]}\n3. ${answers[2]}\n4. ${answers[3]}\n`;
     setResult(message);
     copyToClipboard(message);
   };
