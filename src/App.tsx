@@ -15,6 +15,36 @@ const steps = [
     question: "4.Any blockers?",
   },
 ];
+const greetingByDay = [
+  [],
+  [
+    ["Good morning team!"],
+    ["Have a nice Monday team!"],
+    ["Begin well the week team!"],
+    ["Good Monday!"],
+  ],
+  [["Good morning team!"], ["Have a nice Tuesday team!"], ["Good Tuesday!"]],
+  [
+    ["Good morning team!"],
+    ["Have a nice Wednesday team!"],
+    ["Good Wednesday!"],
+  ],
+  [["Good morning team!"], ["Have a nice Thursday team!"], ["Good Thursday!"]],
+  [
+    ["Good morning team!"],
+    ["Have a nice Friday team!"],
+    ["Have a nice end of week team!"],
+    ["Enjoy your weekend team!"],
+    ["Good Friday!"],
+  ],
+  [],
+];
+const getNiceGreetingByDay = () => {
+  const dayOfWeek = new Date().getDay();
+  const options = greetingByDay[dayOfWeek];
+  const randomIndex = Math.floor(Math.random() * options.length);
+  return options[randomIndex];
+};
 
 function App() {
   const [currentStepNumber, setCurrentStepNumber] = useState(0);
@@ -26,7 +56,8 @@ function App() {
 
   const setResultByAnswers = (answers: string[]) => {
     setShowResult(true);
-    const message = `Good Morning Team!\n1. ${answers[0]}\n2. ${answers[1]}\n3. ${answers[2]}\n4. ${answers[3]}\n`;
+    const niceGreetingByDay = getNiceGreetingByDay();
+    const message = `${niceGreetingByDay}\n1. ${answers[0]}\n2. ${answers[1]}\n3. ${answers[2]}\n4. ${answers[3]}\n`;
     setResult(message);
     copyToClipboard(message);
   };
