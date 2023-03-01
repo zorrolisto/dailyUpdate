@@ -45,6 +45,11 @@ const getNiceGreetingByDay = () => {
   const randomIndex = Math.floor(Math.random() * options.length);
   return options[randomIndex];
 };
+const capitalizeTheFirstLetterOnly = (phrase: string) => {
+  const firstLetter = phrase.charAt(0).toUpperCase();
+  const restOfThePhrase = phrase.slice(1);
+  return firstLetter + restOfThePhrase;
+};
 
 function App() {
   const [currentStepNumber, setCurrentStepNumber] = useState(0);
@@ -55,9 +60,10 @@ function App() {
   const [answers, setAnswers] = useState<string[]>(["", "", "", ""]);
 
   const setResultByAnswers = (answers: string[]) => {
+    const answersCap = answers.map((a) => capitalizeTheFirstLetterOnly(a));
     setShowResult(true);
     const niceGreetingByDay = getNiceGreetingByDay();
-    const message = `${niceGreetingByDay}\n1. ${answers[0]}\n2. ${answers[1]}\n3. ${answers[2]}\n4. ${answers[3]}\n`;
+    const message = `${niceGreetingByDay}\n 1.  ${answersCap[0]}\n 2.  ${answersCap[1]}\n 3.  ${answersCap[2]}\n 4.  ${answersCap[3]}\n`;
     setResult(message);
     copyToClipboard(message);
   };
